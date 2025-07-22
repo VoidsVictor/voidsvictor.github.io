@@ -1,8 +1,10 @@
 import {HashRouter as Router, Routes, Route} from "react-router-dom";
 
+// Components
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx"
 
-// Importing pages
+// Pages
 import Home from "./pages/home/Home.jsx"
 import Experiences from "./pages/experiences/Experience.jsx";
 import PublicationsPatents from "./pages/publications_patents/PublicationPatent.jsx";
@@ -23,6 +25,7 @@ const App = () => {
           <Route path="/education" element={<Education />} />
           <Route path="/about" element={<About />} />	    
         </Routes>
+        <Footer />
       </div>
     </Router>
 	);
