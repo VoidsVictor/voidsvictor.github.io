@@ -22,7 +22,7 @@ const Footer = () => {
   const currentPage = getPageName(location.pathname);
 
   return (
-    <div className="fixed bottom-0 left-0 w-full flex flex-col content-between gap-4 bg-black justify-between py-6 px-20 z-50">
+    <div className="w-full flex flex-col content-between gap-4 bg-black justify-between py-6 px-20">
       <div className="border-t-2 border-white w-full" />
       <div className="flex justify-between items-center px-10">
         <div className="text-lg font-medium">
