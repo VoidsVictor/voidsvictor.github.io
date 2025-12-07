@@ -3,8 +3,8 @@ import { X } from "lucide-react";
 
 const FullScreenMenu = ({ isOpen, onClose }) => {
     const menuItems = [
-        { name: "What You Get", href: "#what-you-get" },
-        { name: "Add Ons", href: "#add-ons" },
+        { name: "Packages", href: "#packages" },
+        // { name: "Add Ons", href: "#add-ons" },
         { name: "Portfolio", href: "#portfolio" },
         { name: "How We Work", href: "#how-we-work" },
         { name: "Contact", href: "#contact" },

@@ -36,7 +36,7 @@ export default function Portfolio() {
 
             <HeroSection />
             <WhatYouGetSection />
-            <OptionalAddOnsSection />
+            {/* <OptionalAddOnsSection />*/}
             <PortfolioSection />
             <HowWeWorkSection />
             <ContactSection />
