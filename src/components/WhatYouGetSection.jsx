@@ -46,15 +46,15 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col">
+        <div className="fixed inset-0 bg-[#FFFFFF] z-50 flex flex-col">
             {/* Header */}
-            <div className="flex justify-between items-center p-4 sm:p-6 border-b border-gray-200">
-                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl truncate pr-4">
+            <div className="flex justify-between items-center p-4 sm:p-6 border-b border-[#0F0326]/20">
+                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl truncate pr-4 text-[#0F0326]">
                     {name}
                 </h2>
                 <button
                     onClick={onClose}
-                    className="text-gray-500 hover:text-[#2d2d2d] transition-colors text-2xl sm:text-3xl leading-none p-2 shrink-0"
+                    className="text-[#0F0326]/60 hover:text-[#0F0326] transition-colors text-2xl sm:text-3xl leading-none p-2 shrink-0"
                     aria-label="Close"
                 >
                     ×
@@ -64,17 +64,17 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
             {/* Content */}
             <div className="flex-1 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-16 py-8">
                 <div className="max-w-2xl w-full text-center">
-                    <p className="text-xs uppercase tracking-wider text-gray-500 mb-4">
+                    <p className="text-xs uppercase tracking-wider text-[#0F0326]/50 mb-4">
                         {currentIndex + 1} of {offerings.length}
                     </p>
-                    <p className="font-serif text-lg sm:text-2xl lg:text-4xl leading-relaxed px-2">
+                    <p className="font-serif text-lg sm:text-2xl lg:text-4xl leading-relaxed px-2 text-[#0F0326]">
                         {offerings[currentIndex]}
                     </p>
                 </div>
             </div>
 
             {/* Navigation */}
-            <div className="border-t border-gray-200 p-4 sm:p-6">
+            <div className="border-t border-[#0F0326]/20 p-4 sm:p-6">
                 {/* Progress dots - visible on all screens */}
                 <div className="flex justify-center gap-1.5 sm:gap-2 mb-4">
                     {offerings.map((_, i) => (
@@ -83,8 +83,8 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
                             onClick={() => setCurrentIndex(i)}
                             className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
                                 i === currentIndex
-                                    ? "bg-[#2d2d2d]"
-                                    : "bg-gray-300 hover:bg-gray-400"
+                                    ? "bg-[#0F0326]"
+                                    : "bg-[#0F0326]/30 hover:bg-[#0F0326]/50"
                             }`}
                             aria-label={`Go to offering ${i + 1}`}
                         />
@@ -96,10 +96,10 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
                     <button
                         onClick={goToPrevious}
                         disabled={currentIndex === 0}
-                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#2d2d2d] transition-colors text-sm sm:text-base ${
+                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
                             currentIndex === 0
                                 ? "opacity-30 cursor-not-allowed"
-                                : "hover:bg-[#2d2d2d] hover:text-white active:bg-[#2d2d2d] active:text-white"
+                                : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
                         }`}
                     >
                         <span>←</span>
@@ -109,10 +109,10 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
                     <button
                         onClick={goToNext}
                         disabled={currentIndex === offerings.length - 1}
-                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#2d2d2d] transition-colors text-sm sm:text-base ${
+                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
                             currentIndex === offerings.length - 1
                                 ? "opacity-30 cursor-not-allowed"
-                                : "hover:bg-[#2d2d2d] hover:text-white active:bg-[#2d2d2d] active:text-white"
+                                : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
                         }`}
                     >
                         <span className="hidden sm:inline">Next</span>
@@ -144,23 +144,23 @@ const PackageCard = ({
     return (
         <>
             <div
-                className={`border border-[#2d2d2d] p-4 sm:p-6 transition-all duration-700 flex flex-col h-full min-h-[280px] sm:min-h-[320px] ${
+                className={`border border-[#0F0326] p-4 sm:p-6 transition-all duration-700 flex flex-col h-full min-h-[280px] sm:min-h-[320px] bg-[#FFFFFF] ${
                     isVisible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-8"
-                } hover:shadow-lg`}
+                } hover:shadow-lg hover:shadow-[#0F0326]/10`}
             >
-                <h4 className="font-serif text-xl sm:text-2xl mb-3 sm:mb-4">
+                <h4 className="font-serif text-xl sm:text-2xl mb-3 sm:mb-4 text-[#0F0326]">
                     {name}
                 </h4>
 
                 <div className="flex-1 flex flex-col">
                     {idealFor && (
                         <div className="mb-3 sm:mb-4">
-                            <p className="text-xs uppercase tracking-wider text-gray-500 mb-1.5 sm:mb-2">
+                            <p className="text-xs uppercase tracking-wider text-[#0F0326]/50 mb-1.5 sm:mb-2">
                                 Ideal For
                             </p>
-                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-[#0F0326]/70 leading-relaxed">
                                 {idealFor}
                             </p>
                         </div>
@@ -169,13 +169,13 @@ const PackageCard = ({
                     {isCustom ? (
                         <div className="flex-1 flex flex-col">
                             <div className="flex-1">
-                                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                                <p className="text-xs sm:text-sm text-[#0F0326]/70 leading-relaxed">
                                     Call Katalyst with your budget and
                                     requirement. We will scope it out and
                                     provide for you.
                                 </p>
-                                <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
-                                    <span className="font-medium">
+                                <p className="text-xs sm:text-sm text-[#0F0326]/70 mt-2 sm:mt-3">
+                                    <span className="font-medium text-[#0F0326]">
                                         Minimum budget:
                                     </span>{" "}
                                     $100
@@ -191,18 +191,18 @@ const PackageCard = ({
                             <div className="mb-3 sm:mb-4">
                                 <button
                                     onClick={() => setIsOverlayOpen(true)}
-                                    className="text-xs sm:text-sm border border-[#2d2d2d] px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-[#2d2d2d] hover:text-white active:bg-[#2d2d2d] active:text-white transition-colors"
+                                    className="text-xs sm:text-sm border border-[#0F0326] text-[#0F0326] px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF] transition-colors"
                                 >
                                     View Offerings
                                 </button>
                             </div>
 
-                            <div className="border-t border-gray-200 pt-3 sm:pt-4">
-                                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1.5 sm:mb-2">
+                            <div className="border-t border-[#0F0326]/20 pt-3 sm:pt-4">
+                                <p className="text-xs uppercase tracking-wider text-[#0F0326]/50 mb-1.5 sm:mb-2">
                                     Pricing
                                 </p>
                                 <div className="space-y-0.5 sm:space-y-1">
-                                    <p className="text-sm sm:text-base">
+                                    <p className="text-sm sm:text-base text-[#0F0326]">
                                         <span className="font-medium">
                                             One-time:
                                         </span>{" "}
@@ -210,7 +210,7 @@ const PackageCard = ({
                                             {pricing.oneTime}
                                         </span>
                                     </p>
-                                    <p className="text-xs sm:text-sm text-gray-600">
+                                    <p className="text-xs sm:text-sm text-[#0F0326]/70">
                                         <span className="font-medium">
                                             Update:
                                         </span>{" "}
@@ -331,14 +331,14 @@ const WhatYouGetSection = () => {
     return (
         <section
             id="packages"
-            className="py-12 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-16 bg-white"
+            className="py-12 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-16 bg-[#0F0326]"
         >
             <div className="max-w-[1400px] mx-auto">
                 <div className="mb-8 sm:mb-12 lg:mb-16">
-                    <h3 className="font-serif text-2xl sm:text-3xl lg:text-5xl leading-tight mb-3 sm:mb-4">
+                    <h3 className="font-serif text-2xl sm:text-3xl lg:text-5xl leading-tight mb-3 sm:mb-4 text-[#FFFFFF]">
                         Packages
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-600 max-w-2xl">
+                    <p className="text-sm sm:text-base text-[#FFFFFF]/70 max-w-2xl">
                         Choose the package that best fits your needs. Each
                         package is designed to provide maximum value for your
                         specific use case.

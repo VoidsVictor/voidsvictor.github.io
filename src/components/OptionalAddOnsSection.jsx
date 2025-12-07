@@ -3,7 +3,7 @@ import React from "react";
 // Add-on Item Component
 const AddOnItem = ({ name, price }) => {
     return (
-        <div className="group flex justify-between items-center py-6 border-b border-[#d4cfc1] transition-all duration-300 hover:border-[#2d2d2d]">
+        <div className="group flex justify-between items-center py-6 border-b border-[#0F0326]/20 transition-all duration-300 hover:border-[#0F0326]">
             <span className="text-base lg:text-lg transition-all duration-300 group-hover:translate-x-2">
                 {name}
             </span>
@@ -26,9 +26,12 @@ const OptionalAddOnsSection = () => {
     ];
 
     return (
-        <section id="add-ons" className="py-20 lg:py-32 px-6 lg:px-16">
+        <section
+            id="add-ons"
+            className="py-20 lg:py-32 px-6 lg:px-16 bg-[#FFFFFF]"
+        >
             <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[320px_1fr] gap-12 lg:gap-20">
-                <h3 className="font-serif text-3xl lg:text-5xl leading-tight">
+                <h3 className="font-serif text-3xl lg:text-5xl leading-tight text-[#0F0326]">
                     Optional Add-Ons
                 </h3>
                 <div>

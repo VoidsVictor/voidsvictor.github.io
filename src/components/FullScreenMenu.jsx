@@ -29,7 +29,7 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
 
     return (
         <div
-            className={`fixed inset-0 bg-[#2d2d2d] z-[100] transition-all duration-500 ${
+            className={`fixed inset-0 bg-[#0F0326] z-[100] transition-all duration-500 ${
                 isOpen
                     ? "opacity-100 pointer-events-auto"
                     : "opacity-0 pointer-events-none"
@@ -37,7 +37,7 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
         >
             <div className="h-full flex flex-col">
                 <div className="px-6 py-6 lg:px-16 lg:py-8 flex justify-between items-center">
-                    <h2 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase text-[#e8e4dc]">
+                    <h2 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase text-white">
                         Navigation
                     </h2>
                     <button
@@ -45,7 +45,7 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                         className="group"
                         aria-label="Close menu"
                     >
-                        <X className="w-5 h-5 lg:w-6 lg:h-6 text-[#e8e4dc] cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:rotate-90" />
+                        <X className="w-5 h-5 lg:w-6 lg:h-6 text-white cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:rotate-90" />
                     </button>
                 </div>
 
@@ -67,10 +67,10 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                                         e.preventDefault();
                                         handleNavClick(item.href);
                                     }}
-                                    className="group font-serif text-3xl lg:text-6xl text-[#e8e4dc] hover:text-[#c8c4b8] transition-all duration-300 inline-block relative"
+                                    className="group font-serif text-3xl lg:text-6xl text-white hover:text-white/70 transition-all duration-300 inline-block relative"
                                 >
                                     {item.name}
-                                    <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#c8c4b8] transition-all duration-300 group-hover:w-full"></span>
+                                    <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             </li>
                         ))}
@@ -78,7 +78,7 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                 </nav>
 
                 <div className="px-6 py-6 lg:px-16 lg:py-8 text-center">
-                    <p className="text-xs lg:text-sm text-[#b8b4a8] tracking-wider">
+                    <p className="text-xs lg:text-sm text-white/60 tracking-wider">
                         © 2025 Katalyst. All rights reserved.
                     </p>
                 </div>

@@ -24,7 +24,7 @@ export default function Portfolio() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#e8e4dc] text-[#2d2d2d]">
+        <div className="min-h-screen bg-[#FFFFFF] text-[#0F0326]">
             <Header
                 onMenuToggle={() => setMenuOpen(true)}
                 scrolled={scrolled}
