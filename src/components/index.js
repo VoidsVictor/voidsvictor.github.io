@@ -1,0 +1,9 @@
+export { default as Header } from "./Header";
+export { default as FullScreenMenu } from "./FullScreenMenu";
+export { default as HeroSection } from "./HeroSection";
+export { default as WhatYouGetSection } from "./WhatYouGetSection";
+export { default as OptionalAddOnsSection } from "./OptionalAddOnsSection";
+export { default as PortfolioSection } from "./PortfolioSection";
+export { default as HowWeWorkSection } from "./HowWeWorkSection";
+export { default as ContactSection } from "./ContactSection";
+export { default as Footer } from "./Footer";
