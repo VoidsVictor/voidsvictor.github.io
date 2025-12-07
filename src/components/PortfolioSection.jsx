@@ -1,101 +1,38 @@
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 import KDLogo from "../assets/KDIC_logo.webp";
 import SCCLogo from "../assets/logo.webp";
 
-// Portfolio Project Component
-const PortfolioProject = ({
-    number,
-    title,
-    role,
-    description,
-    link,
-    logos,
-}) => {
-    return (
-        <div className="group">
-            <div className="text-xs lg:text-sm text-gray-400 mb-6 tracking-widest">
-                {number}
-            </div>
-            <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-start">
-                <div>
-                    <h4 className="font-serif text-2xl lg:text-4xl mb-4 leading-tight group-hover:text-[#5a5a5a] transition-colors duration-300">
-                        {title}
-                    </h4>
-                    <p className="text-sm lg:text-base text-gray-500 mb-3 tracking-wide uppercase">
-                        {role}
-                    </p>
-                    <p className="text-base lg:text-lg text-gray-600 mb-6 max-w-[600px] leading-relaxed">
-                        {description}
-                    </p>
-                    {link && (
-                        <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/btn inline-flex items-center gap-2 text-base border-b-2 border-[#2d2d2d] pb-1 hover:border-[#5a5a5a] transition-all duration-300"
-                        >
-                            <span>View Project</span>
-                            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-                        </a>
-                    )}
-                </div>
-                {logos}
-            </div>
-        </div>
-    );
-};
-
-// Portfolio Section Component
+// Portfolio Section Component with Carousel
 const PortfolioSection = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const projects = [
         {
-            number: "01",
             title: "KD Innovation And Incubation Centre",
-            role: "Technical Lead",
-            description: "Building the web platform for the incubation centre.",
+            description:
+                "Part of the team building the web platform for the KD Innovation and Incubation Centre.",
             link: "https://www.kdic.org.in/",
-            logos: (
-                <div className="flex items-center gap-8 lg:gap-10">
-                    <img
-                        src={KDLogo}
-                        alt="KDIC Logo"
-                        className="w-20 h-20 lg:w-28 lg:h-28 object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-                        style={{ filter: "grayscale(100%)" }}
-                    />
-                    <img
-                        src={SCCLogo}
-                        alt="SCC Logo"
-                        className="w-16 h-16 lg:w-24 lg:h-24 object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-                        style={{ filter: "grayscale(100%)" }}
-                    />
-                </div>
-            ),
+            logos: [
+                { src: KDLogo, alt: "KDIC Logo" },
+                { src: SCCLogo, alt: "SCC Logo" },
+            ],
         },
-        {
-            number: "02",
-            title: "WhiteBox",
-            role: "Co-founder and CTO",
-            description:
-                "Building the platform that will power Vehicle to Everything.",
-            logos: (
-                <div className="flex justify-start lg:justify-end">
-                    <div className="bg-[#2d2d2d] text-white px-10 py-8 lg:px-16 lg:py-12 text-2xl lg:text-3xl font-serif shadow-xl transition-transform duration-300 hover:scale-105">
-                        WhiteBox
-                    </div>
-                </div>
-            ),
-        },
-        {
-            number: "03",
-            title: "Research Work (Pre-Printed)",
-            role: "Co-Author",
-            description:
-                "Co-built the simulation engine to understand and analyse how humans behave under uncertainty.",
-            link: "https://doi.org/10.5281/zenodo.14840926",
-        },
+        // Future entries can be added here
     ];
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev + 1) % projects.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex(
+            (prev) => (prev - 1 + projects.length) % projects.length,
+        );
+    };
+
+    const currentProject = projects[currentIndex];
 
     return (
         <section
@@ -106,10 +43,90 @@ const PortfolioSection = () => {
                 <h3 className="font-serif text-3xl lg:text-5xl mb-16 lg:mb-24 leading-tight">
                     Notable Portfolio
                 </h3>
-                <div className="space-y-20 lg:space-y-32">
-                    {projects.map((project, index) => (
-                        <PortfolioProject key={index} {...project} />
-                    ))}
+
+                <div className="relative">
+                    {/* Carousel Container */}
+                    <div className="overflow-hidden">
+                        <div className="group bg-[#f8f7f5] rounded-2xl p-8 lg:p-16 transition-all duration-500">
+                            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                                {/* Content */}
+                                <div>
+                                    <h4 className="font-serif text-2xl lg:text-4xl mb-6 leading-tight group-hover:text-[#5a5a5a] transition-colors duration-300">
+                                        {currentProject.title}
+                                    </h4>
+                                    <p className="text-base lg:text-lg text-gray-600 mb-8 leading-relaxed">
+                                        {currentProject.description}
+                                    </p>
+                                    {currentProject.link && (
+                                        <a
+                                            href={currentProject.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group/btn inline-flex items-center gap-2 text-base border-b-2 border-[#2d2d2d] pb-1 hover:border-[#5a5a5a] transition-all duration-300"
+                                        >
+                                            <span>View Project</span>
+                                            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                                        </a>
+                                    )}
+                                </div>
+
+                                {/* Logos */}
+                                <div className="flex items-center justify-center lg:justify-end gap-8 lg:gap-12">
+                                    {currentProject.logos?.map(
+                                        (logo, index) => (
+                                            <img
+                                                key={index}
+                                                src={logo.src}
+                                                alt={logo.alt}
+                                                className="w-20 h-20 lg:w-32 lg:h-32 object-contain opacity-80 hover:opacity-100 transition-all duration-300"
+                                                style={{
+                                                    filter: "grayscale(100%)",
+                                                }}
+                                            />
+                                        ),
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Navigation Arrows - Only show when there's more than one project */}
+                    {projects.length > 1 && (
+                        <>
+                            <button
+                                onClick={prevSlide}
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-8 w-12 h-12 lg:w-14 lg:h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-300"
+                                aria-label="Previous project"
+                            >
+                                <ChevronLeft className="w-6 h-6" />
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-8 w-12 h-12 lg:w-14 lg:h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-300"
+                                aria-label="Next project"
+                            >
+                                <ChevronRight className="w-6 h-6" />
+                            </button>
+                        </>
+                    )}
+
+                    {/* Dots Indicator - Only show when there's more than one project */}
+                    {projects.length > 1 && (
+                        <div className="flex justify-center gap-3 mt-8">
+                            {projects.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentIndex(index)}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                        index === currentIndex
+                                            ? "bg-[#2d2d2d] w-8"
+                                            : "bg-gray-300 hover:bg-gray-400"
+                                    }`}
+                                    aria-label={`Go to project ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

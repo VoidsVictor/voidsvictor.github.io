@@ -10,7 +10,7 @@ const Header = ({ onMenuToggle, scrolled }) => (
         }`}
     >
         <div className="max-w-[1400px] mx-auto flex justify-between items-center">
-            <a href="mailto:sourjyas.work@gmail.com" className="group">
+            <a href="mailto:katalyse.me@gmail.com" className="group">
                 <Mail className="w-5 h-5 lg:w-6 lg:h-6 cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:text-[#5a5a5a]" />
             </a>
             <h1 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase">

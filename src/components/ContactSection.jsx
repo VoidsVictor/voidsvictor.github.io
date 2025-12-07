@@ -8,10 +8,10 @@ const ContactSection = () => (
                 Let's Work Together
             </h3>
             <a
-                href="mailto:sourjyas.work@gmail.com"
+                href="mailto:katalyse.me@gmail.com"
                 className="group inline-flex items-center gap-3 text-lg lg:text-2xl border-b-2 border-[#2d2d2d] pb-2 hover:border-[#5a5a5a] transition-all duration-300"
             >
-                <span>sourjyas.work@gmail.com</span>
+                <span>katalyse.me@gmail.com</span>
                 <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
         </div>
