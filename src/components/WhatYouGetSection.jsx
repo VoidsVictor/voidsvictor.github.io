@@ -46,78 +46,80 @@ const OfferingsOverlay = ({ isOpen, onClose, name, offerings }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-[#FFFFFF] z-50 flex flex-col">
-            {/* Header */}
-            <div className="flex justify-between items-center p-4 sm:p-6 border-b border-[#0F0326]/20">
-                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl truncate pr-4 text-[#0F0326]">
-                    {name}
-                </h2>
-                <button
-                    onClick={onClose}
-                    className="text-[#0F0326]/60 hover:text-[#0F0326] transition-colors text-2xl sm:text-3xl leading-none p-2 shrink-0"
-                    aria-label="Close"
-                >
-                    ×
-                </button>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-16 py-8">
-                <div className="max-w-2xl w-full text-center">
-                    <p className="text-xs uppercase tracking-wider text-[#0F0326]/50 mb-4">
-                        {currentIndex + 1} of {offerings.length}
-                    </p>
-                    <p className="font-serif text-lg sm:text-2xl lg:text-4xl leading-relaxed px-2 text-[#0F0326]">
-                        {offerings[currentIndex]}
-                    </p>
+        <div className="fixed inset-0 bg-[#0F0326]/50 z-50 flex items-center justify-center p-4">
+            <div className="bg-[#FFFFFF] w-full max-w-3xl h-[500px] sm:h-[550px] rounded-lg shadow-2xl flex flex-col">
+                {/* Header */}
+                <div className="flex justify-between items-center p-4 sm:p-6 border-b border-[#0F0326]/20">
+                    <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl truncate pr-4 text-[#0F0326]">
+                        {name}
+                    </h2>
+                    <button
+                        onClick={onClose}
+                        className="text-[#0F0326]/60 hover:text-[#0F0326] transition-colors text-2xl sm:text-3xl leading-none p-2 shrink-0"
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
                 </div>
-            </div>
 
-            {/* Navigation */}
-            <div className="border-t border-[#0F0326]/20 p-4 sm:p-6">
-                {/* Progress dots - visible on all screens */}
-                <div className="flex justify-center gap-1.5 sm:gap-2 mb-4">
-                    {offerings.map((_, i) => (
+                {/* Content */}
+                <div className="flex-1 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-16 py-8">
+                    <div className="max-w-2xl w-full text-center">
+                        <p className="text-xs uppercase tracking-wider text-[#0F0326]/50 mb-4">
+                            {currentIndex + 1} of {offerings.length}
+                        </p>
+                        <p className="font-serif text-lg sm:text-2xl lg:text-4xl leading-relaxed px-2 text-[#0F0326]">
+                            {offerings[currentIndex]}
+                        </p>
+                    </div>
+                </div>
+
+                {/* Navigation */}
+                <div className="border-t border-[#0F0326]/20 p-4 sm:p-6">
+                    {/* Progress dots - visible on all screens */}
+                    <div className="flex justify-center gap-1.5 sm:gap-2 mb-4">
+                        {offerings.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentIndex(i)}
+                                className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
+                                    i === currentIndex
+                                        ? "bg-[#0F0326]"
+                                        : "bg-[#0F0326]/30 hover:bg-[#0F0326]/50"
+                                }`}
+                                aria-label={`Go to offering ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Navigation buttons */}
+                    <div className="flex justify-between items-center gap-4">
                         <button
-                            key={i}
-                            onClick={() => setCurrentIndex(i)}
-                            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
-                                i === currentIndex
-                                    ? "bg-[#0F0326]"
-                                    : "bg-[#0F0326]/30 hover:bg-[#0F0326]/50"
+                            onClick={goToPrevious}
+                            disabled={currentIndex === 0}
+                            className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
+                                currentIndex === 0
+                                    ? "opacity-30 cursor-not-allowed"
+                                    : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
                             }`}
-                            aria-label={`Go to offering ${i + 1}`}
-                        />
-                    ))}
-                </div>
+                        >
+                            <span>←</span>
+                            <span className="hidden sm:inline">Previous</span>
+                        </button>
 
-                {/* Navigation buttons */}
-                <div className="flex justify-between items-center gap-4">
-                    <button
-                        onClick={goToPrevious}
-                        disabled={currentIndex === 0}
-                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
-                            currentIndex === 0
-                                ? "opacity-30 cursor-not-allowed"
-                                : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
-                        }`}
-                    >
-                        <span>←</span>
-                        <span className="hidden sm:inline">Previous</span>
-                    </button>
-
-                    <button
-                        onClick={goToNext}
-                        disabled={currentIndex === offerings.length - 1}
-                        className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
-                            currentIndex === offerings.length - 1
-                                ? "opacity-30 cursor-not-allowed"
-                                : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
-                        }`}
-                    >
-                        <span className="hidden sm:inline">Next</span>
-                        <span>→</span>
-                    </button>
+                        <button
+                            onClick={goToNext}
+                            disabled={currentIndex === offerings.length - 1}
+                            className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 border border-[#0F0326] text-[#0F0326] transition-colors text-sm sm:text-base ${
+                                currentIndex === offerings.length - 1
+                                    ? "opacity-30 cursor-not-allowed"
+                                    : "hover:bg-[#0F0326] hover:text-[#FFFFFF] active:bg-[#0F0326] active:text-[#FFFFFF]"
+                            }`}
+                        >
+                            <span className="hidden sm:inline">Next</span>
+                            <span>→</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

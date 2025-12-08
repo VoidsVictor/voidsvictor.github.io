@@ -36,17 +36,20 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
             }`}
         >
             <div className="h-full flex flex-col">
-                <div className="px-6 py-6 lg:px-16 lg:py-8 flex justify-between items-center">
-                    <h2 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase text-white">
-                        Navigation
-                    </h2>
-                    <button
-                        onClick={onClose}
-                        className="group"
-                        aria-label="Close menu"
-                    >
-                        <X className="w-5 h-5 lg:w-6 lg:h-6 text-white cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:rotate-90" />
-                    </button>
+                <div className="px-6 py-6 lg:px-16 lg:py-8">
+                    <div className="max-w-[1400px] mx-auto flex justify-between items-center">
+                        <div className="w-5 h-5 lg:w-6 lg:h-6" />
+                        <h2 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase text-white">
+                            Navigation
+                        </h2>
+                        <button
+                            onClick={onClose}
+                            className="group"
+                            aria-label="Close menu"
+                        >
+                            <X className="w-5 h-5 lg:w-6 lg:h-6 text-white cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:rotate-90" />
+                        </button>
+                    </div>
                 </div>
 
                 <nav className="flex-1 flex items-center justify-center px-6">

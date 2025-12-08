@@ -11,7 +11,7 @@ const Header = ({ onMenuToggle, scrolled }) => (
             <a href="mailto:katalyse.me@gmail.com" className="group">
                 <Mail className="w-5 h-5 lg:w-6 lg:h-6 text-[#0F0326] cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:opacity-70" />
             </a>
-            <h1 className="font-serif text-sm lg:text-base tracking-[0.3em] uppercase text-[#0F0326]">
+            <h1 className="font-serif text-base lg:text-lg tracking-[0.3em] uppercase text-[#0F0326]">
                 Katalyst
             </h1>
             <button
